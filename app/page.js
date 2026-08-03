@@ -901,7 +901,7 @@ export default function RaikuStakeHub() {
                   alt="Raiku logo"
                   className="brand-logo-image"
                 />
-                <span>RAIKU</span>
+               
               </div>
               <p>
                 Liquid and native staking for Solana, built around validators
