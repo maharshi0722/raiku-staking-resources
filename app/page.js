@@ -266,8 +266,12 @@ export default function RaikuStakeHub() {
         /* ---------- NAV ---------- */
         .nav {
           position: sticky; top: 0; z-index: 50;
-          display: grid; grid-template-columns: 1fr auto 1fr;
+          display: grid; grid-template-columns: auto 1fr auto;
           align-items: center;
+          gap: 12px;
+          width: 100%;
+          max-width: 1280px;
+          margin: 0 auto;
           padding: 18px 24px;
           background: rgba(8,9,10,0.7);
           backdrop-filter: blur(10px);
@@ -275,22 +279,23 @@ export default function RaikuStakeHub() {
           transition: border-color .25s ease, background .25s ease;
         }
         .nav.scrolled { border-color: var(--border-soft); background: rgba(8,9,10,0.92); }
-        .nav-links { display: flex; gap: 28px; }
-        .nav-links button {
-          background: none; border: none; color: var(--text-dim);
-          font-size: 14px; font-weight: 500; padding: 6px 0;
-          transition: color .2s ease;
+        .nav-left { justify-self: start; }
+        .nav-center { display: flex; align-items: center; justify-content: center; justify-self: center; }
+        .nav-title {
+          font-family: 'Space Grotesk', sans-serif;
+          font-weight: 700;
+          font-size: 20px;
+          letter-spacing: 0.08em;
+          color: var(--text);
+          text-transform: uppercase;
         }
-        .nav-links button:hover { color: var(--text); }
-        .nav-center { display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .nav-center span { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 17px; letter-spacing: 0.02em; }
         .brand-logo-image {
-          height: 32px;
+          height: 34px;
           width: auto;
           object-fit: contain;
           display: block;
         }
-        .nav-right { display: flex; justify-content: flex-end; align-items: center; gap: 14px; }
+        .nav-right { display: flex; justify-content: flex-end; align-items: center; gap: 14px; justify-self: end; }
         .icon-btn {
           display: flex; align-items: center; justify-content: center;
           width: 34px; height: 34px; border-radius: 9px;
@@ -303,6 +308,7 @@ export default function RaikuStakeHub() {
           font-size: 13.5px; font-weight: 600; padding: 8px 16px; border-radius: 9px;
           display: none;
         }
+        .nav-title-mobile { display: none; }
         @media (min-width: 640px) { .btn-launch { display: inline-flex; } }
 
         /* ---------- HERO ---------- */
@@ -341,6 +347,7 @@ export default function RaikuStakeHub() {
           padding: 96px 24px 64px;
           display: flex; flex-direction: column; align-items: center;
           text-align: center;
+          min-height: 660px;
         }
         .eyebrow {
           display: inline-flex; align-items: center; gap: 8px;
@@ -353,36 +360,47 @@ export default function RaikuStakeHub() {
         @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
 
         .hero h1 {
-          font-size: clamp(34px, 6vw, 62px);
-          font-weight: 700; line-height: 1.05;
+          font-size: clamp(40px, 6vw, 68px);
+          font-weight: 700; line-height: 1.04;
           max-width: 760px;
           color: var(--text);
         }
         .hero h1 em { color: var(--accent); font-style: normal; }
         .hero p.lead {
           margin-top: 20px; max-width: 560px;
-          color: var(--text-dim); font-size: 16.5px; line-height: 1.65;
+          color: var(--text-dim); font-size: 17.5px; line-height: 1.7;
         }
         .hero-visual {
-          margin-top: 30px;
-          display: flex;
-          justify-content: center;
+          position: absolute;
+          top: 36%;
+          left: 50%;
+          transform: translate(-50%, -10%);
+          width: min(90vw, 760px);
+          max-width: 100%;
+          opacity: 0.16;
+          pointer-events: none;
+          z-index: 1;
         }
-        .hero-visual-card {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          padding: 18px 24px;
-          border: 1px solid rgba(199,255,62,0.22);
-          border-radius: 18px;
-          background: rgba(12,14,11,0.85);
-          box-shadow: 0 16px 40px rgba(0,0,0,0.25);
-        }
-        .hero-logo-image {
-          width: min(70vw, 280px);
+        .hero-visual img {
+          width: 100%;
           height: auto;
-          object-fit: contain;
           display: block;
+          filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));
+        }
+        @media (max-width: 760px) {
+          .hero-visual {
+            top: 38%;
+            width: min(92vw, 520px);
+            opacity: 0.11;
+          }
+        }
+        @media (max-width: 520px) {
+          .hero-visual {
+            top: 42%;
+            transform: translate(-50%, -15%);
+            width: min(96vw, 400px);
+            opacity: 0.09;
+          }
         }
         .partner-strip {
           margin-top: 22px;
@@ -445,8 +463,8 @@ export default function RaikuStakeHub() {
           font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent);
           text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; display: block;
         }
-        .section-head h2 { font-size: clamp(26px, 3.6vw, 36px); font-weight: 600; }
-        .section-head p { color: var(--text-dim); margin-top: 12px; font-size: 15.5px; line-height: 1.6; }
+        .section-head h2 { font-size: clamp(28px, 3.6vw, 40px); font-weight: 600; }
+        .section-head p { color: var(--text-dim); margin-top: 12px; font-size: 16.5px; line-height: 1.65; }
 
         /* ---------- STAKE CARDS ---------- */
         .stake-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
@@ -588,7 +606,15 @@ export default function RaikuStakeHub() {
         .footer-social { display: flex; gap: 10px; }
 
         @media (max-width: 640px) {
-          .nav { grid-template-columns: auto auto auto; padding: 14px 16px; }
+          .nav { grid-template-columns: auto 1fr auto; padding: 14px 16px; }
+          .nav-left, .nav-right { min-width: 0; }
+          .nav-center { padding: 0 10px; }
+          .nav-title { font-size: 16px; }
+          .nav-title-mobile { display: inline-block; }
+          .nav-title:not(.nav-title-mobile) { display: none; }
+          .icon-btn { display: none; }
+          .btn-launch { display: none; }
+          .nav-right { gap: 10px; }
           .nav-links { display: none; }
           .wrap { padding: 0 18px; }
           section.block { padding: 60px 0; }
@@ -606,13 +632,10 @@ export default function RaikuStakeHub() {
           />
         </div>
         <div className="nav-center">
-          <div className="nav-links">
-            <button onClick={() => scrollTo("stake")}>Stake</button>
-            <button onClick={() => scrollTo("ecosystem")}>Ecosystem</button>
-            <button onClick={() => scrollTo("faq")}>FAQ</button>
-          </div>
+          <span className="nav-title">Raiku Staking Hub</span>
         </div>
         <div className="nav-right">
+          <span className="nav-title nav-title-mobile">Raiku Staking Hub</span>
           <a
             className="icon-btn"
             href="https://x.com/raikucom"
@@ -647,7 +670,9 @@ export default function RaikuStakeHub() {
             client. They earn more from Ahead-of-Time and Just-In-Time
             transactions and pass the extra yield straight to stakers.
           </p>
-          <div className="hero-visual" aria-label="Raiku brand showcase"></div>
+          <div className="hero-visual" aria-label="Raiku brand showcase">
+            <img src="/hero.png" alt="Raiku hero illustration" />
+          </div>
           <div className="partner-strip" aria-label="Partner logos">
             <div className="partner-pill">
               <img src="/logo1.png" alt="Partner logo 1" />
